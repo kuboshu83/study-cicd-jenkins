@@ -6,9 +6,18 @@ services:
       context: ./dockerfiles/gitbucket
       dockerfile: Dockerfile
     ports:
-      - 8080:8080
+      - 8081:8080
     volumes:
       - gitbucket-data:/root/.gitbucket
+    networks:
+      - ci-network
+
+  jenkins:
+    image: jenkins/jenkins:lts-jdk17
+    ports:
+      - 8082:8080
+    volumes:
+      - jenkins-data:/var/jenkins_home
     networks:
       - ci-network
 
@@ -17,3 +26,4 @@ networks:
 
 volumes:
   gitbucket-data:
+  jenkins-data:
