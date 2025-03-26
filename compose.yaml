@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  gitbucket:
+    build:
+      context: ./dockerfiles/gitbucket
+      dockerfile: Dockerfile
+    ports:
+      - 8080:8080
+    volumes:
+      - gitbucket-data:/root/.gitbucket
+    networks:
+      - ci-network
+
+networks:
+  ci-network:
+
+volumes:
+  gitbucket-data:
