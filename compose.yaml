@@ -20,7 +20,9 @@ services:
       - ci-network
 
   redmine:
-    image: redmine:5.1.7
+    build:
+      context: ./dockerfiles/redmine
+      dockerfile: Dockerfile
     ports:
       - 8083:3000
     depends_on:
@@ -32,6 +34,8 @@ services:
       REDMINE_DB_PASSWORD: ${DB_PASSWORD}
       REDMINE_DB_DATABASE: ${DB_NAME}
       REDMINE_SECRET_KEY_BASE: supersecretkey
+    volumes:
+      - redmine-data:/usr/src/redmine/files
     networks:
       - ci-network
 
@@ -71,4 +75,4 @@ volumes:
   gitbucket-data:
   jenkins-data:
   db-data:
-  redmine:
+  redmine-data:
