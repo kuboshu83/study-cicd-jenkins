@@ -32,13 +32,32 @@ Redmine のデータベースとして使用しています。
 
 # 使い方
 
-コンテナの起動は
+## gitbucket.war の準備
+
+公式リポジトリから、gitbucket.war をダウンロードして[ここに](./dockerfiles/gitbucket/resources/gitbucket-4.42.1/)配置してください。
+
+## .env ファイルの準備
+
+コンテナの起動時に渡す環境変数が記載されているファイル(.env)を、
+docker-compose.yml と同じディレクトリに配置します。
+
+.env ファイルの内容は以下のようになってます。
+
+```text
+DB_USER=db-user           #MySQLのユーザ名
+DB_PASSWORD=db-user-pass  #MySQLのユーザパスワード
+DB_NAME=redmine-db        #Redmineが使用するDB名
+```
+
+## コンテナの起動
+
+コンテナの起動は、
 
 ```bash
 make start
 ```
 
-コンテナの停止は
+コンテナの停止は、
 
 ```bash
 make stop
