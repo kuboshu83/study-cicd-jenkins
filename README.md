@@ -70,7 +70,7 @@ RAILS_ENV=production REDMINE_LANG=ja bundle exec rake redmine:load_default_data
 Dockerfile で、Redmine の公式イメージにスクリプトを取り込んで、
 最終的にエントリポイントで取り込んだスクリプトを実行するようにしています。
 
-詳細は、スクリプトの[README.md](./dockerfiles/redmine/resources/init.sh)を参照してください。
+詳細は、スクリプトの[README.md](./dockerfiles/redmine/resources/README.md)を参照してください。
 
 # リンク
 
