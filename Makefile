@@ -6,3 +6,6 @@ stop:
 	@docker compose down
 	@echo "stop gitbucket"
 	@echo "stop jenkins"
+
+init:
+	@./script/init.sh
