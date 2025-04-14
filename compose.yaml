@@ -6,7 +6,7 @@ services:
     ports:
       - 8081:8080
     volumes:
-      - gitbucket-data:/root/.gitbucket
+      - ${PWD}/volumes/gitbucket/data:/root/.gitbucket
     networks:
       - ci-network
 
@@ -15,7 +15,7 @@ services:
     ports:
       - 8082:8080
     volumes:
-      - jenkins-data:/var/jenkins_home
+      - ${PWD}/volumes/jenkins/data:/var/jenkins_home
     networks:
       - ci-network
 
@@ -35,14 +35,14 @@ services:
       REDMINE_DB_DATABASE: ${DB_NAME}
       REDMINE_SECRET_KEY_BASE: supersecretkey
     volumes:
-      - redmine-data:/usr/src/redmine/files
+      - ${PWD}/volumes/redmine/data:/usr/src/redmine/files
     networks:
       - ci-network
 
   db:
     image: mysql:9.2.0
     volumes:
-      - db-data:/var/lib/mysql
+      - ${PWD}/volumes/mysql/data:/var/lib/mysql
     environment:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
@@ -70,9 +70,3 @@ services:
 
 networks:
   ci-network:
-
-volumes:
-  gitbucket-data:
-  jenkins-data:
-  db-data:
-  redmine-data:
