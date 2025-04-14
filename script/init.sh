@@ -2,7 +2,7 @@
 
 if [ ! -e .env ]; then
 	touch .env
-	echo DB_USER="please set database user name" >> .env
-	echo DB_PASSWORD="please set database user password" >> .env
-	echo DB_NAME="please set redmine database name" >> .env
+	echo DB_USER=db-user >> .env
+	echo DB_PASSWORD=db-user-pass >> .env
+	echo DB_NAME=redmine-db >> .env
 fi
