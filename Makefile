@@ -11,5 +11,5 @@ stop:
 init:
 	@./script/init.sh
 
-clear:
+clean:
 	@rm -rf volumes
