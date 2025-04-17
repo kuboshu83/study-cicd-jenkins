@@ -26,10 +26,10 @@ services:
     ports:
       - 8083:3000
     depends_on:
-      db:
+      db_redmine:
         condition: service_healthy
     environment:
-      REDMINE_DB_MYSQL: db
+      REDMINE_DB_MYSQL: db_redmine
       REDMINE_DB_USERNAME: ${DB_USER}
       REDMINE_DB_PASSWORD: ${DB_PASSWORD}
       REDMINE_DB_DATABASE: ${DB_NAME}
@@ -39,10 +39,10 @@ services:
     networks:
       - ci-network
 
-  db:
+  db_redmine:
     image: mysql:9.2.0
     volumes:
-      - ${PWD}/volumes/mysql/data:/var/lib/mysql
+      - ${PWD}/volumes/db_redmine/data:/var/lib/mysql
     environment:
       MYSQL_USER: ${DB_USER}
       MYSQL_PASSWORD: ${DB_PASSWORD}
