@@ -13,3 +13,5 @@ init:
 
 clean:
 	@rm -rf volumes
+
+delete: stop clean
