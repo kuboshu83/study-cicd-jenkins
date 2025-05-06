@@ -100,7 +100,8 @@ Dockerfile で、Redmine の公式イメージにスクリプトを取り込ん�
 
 # リンク
 
-- [Gitgucket のリポジトリ](https://github.com/gitbucket/gitbucket/releases)
+- [Gitbucket のリポジトリ](https://github.com/gitbucket/gitbucket/releases)
+- [Gitbucke の Wiki](https://github.com/gitbucket/gitbucket/wiki/Basic-configurations)
 - [Tomcat: Docker Hub](https://hub.docker.com/_/tomcat)
 - [Jenkins: Docker Hub](https://hub.docker.com/r/jenkins/jenkins)
 - [MySQL: Docker Hub](https://hub.docker.com/_/mysql)

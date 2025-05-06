@@ -5,8 +5,41 @@ services:
       dockerfile: Dockerfile
     ports:
       - 8081:8080
+    environment:
+      - GITBUCKET_DB_URL=jdbc:mysql://db-gitbucket/gitbucket?useUnicode=true&characterEncoding=utf8
+      - GITBUCKET_DB_USER=test
+      - GITBUCKET_DB_PASSWORD=test
     volumes:
       - ${PWD}/volumes/gitbucket/data:/root/.gitbucket
+    networks:
+      - ci-network
+
+  db-gitbucket:
+    image: mysql:8.4.5
+    volumes:
+      - ${PWD}/volumes/db_gitbucket/data:/var/lib/mysql
+    environment:
+      MYSQL_USER: test
+      MYSQL_PASSWORD: test
+      MYSQL_DATABASE: gitbucket
+      MYSQL_RANDOM_ROOT_PASSWORD: yes
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mysqladmin",
+          "ping",
+          "-h",
+          "localhost",
+          "-u",
+          "$DB_USER",
+          "-p$DB_PASSWORD",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 6
+      start_period: 30s
     networks:
       - ci-network
 
